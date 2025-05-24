@@ -1,0 +1,144 @@
+@import url('https://fonts.cdnfonts.com/css/pt-root-ui');
+
+:root {
+  --font-family: 'PT Root UI', sans-serif;
+  --main-color: #444444;
+  --second-color: #111111;
+  --accent-color: #e22e2e;
+}
+
+body {
+  font-family: var(--font-family);
+}
+
+
+/*test ne pisat v prot*/
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/*main style*/
+.accordion {
+  width: 100%;
+}
+
+.accordion-title {
+  color: #50575B;
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.accordion-wrapper {
+  display: grid;
+  grid-template: auto / repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 15px;
+}
+
+.accordion-item {
+  border-radius: 15px;
+  border: 1px solid #F7F8FA;
+  padding: 16px 104px 16px 36px;
+  background: #FFF;
+
+  cursor: pointer;
+}
+
+.accordion-item.open {
+  background: #F7F8FA;
+  box-shadow: 0px 16px 40px 0px rgba(0, 0, 0, 0.10);
+  .accordion-item__bottom {
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
+    padding: 15px 0;
+  }
+  .accordion-item__arrow {
+    transform: rotate(180deg);
+  }
+}
+
+.accordion-item__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 68px;
+
+  position: relative;
+}
+
+.accordion-item__title {
+  color: #50575B;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.accordion-item__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all .3s ease;
+
+  position: absolute;
+  right: -60px;
+}
+
+.accordion-item__bottom {
+  color: #50575B;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%; /* 21.6px */
+
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all .3s ease;
+}
+
+@media screen and (max-width: 992px) {
+  .accordion-wrapper {
+    grid-template: auto / 1fr;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .accordion-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .accordion-item {
+    padding: 14px 40px 14px 20px;
+  }
+
+  .accordion-item__arrow {
+    right: -30px;
+  }
+
+  .accordion-item__top {
+    min-height: 45px;
+  }
+
+  .accordion-item__title {
+    font-size: 16px;
+  }
+
+  .accordion-item__bottom {
+    font-size: 14px;
+  }
+}
