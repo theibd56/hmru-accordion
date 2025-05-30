@@ -41,8 +41,7 @@ main {
 }
 
 .accordion-wrapper {
-  display: grid;
-  grid-template: auto / repeat(2, 1fr);
+  display: flex;
   column-gap: 20px;
   row-gap: 15px;
 }
@@ -54,6 +53,9 @@ main {
   background: #FFF;
 
   cursor: pointer;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .accordion-item.open {
@@ -112,7 +114,15 @@ main {
 
 @media screen and (max-width: 992px) {
   .accordion-wrapper {
-    grid-template: auto / 1fr;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-item {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
   }
 }
 

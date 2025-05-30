@@ -1,38 +1,26 @@
 import '../style.css'
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.querySelectorAll('.accordion-item')) {
-        const accordionItems = document.querySelectorAll('.accordion-item');
-        const columns = 2;
-        const breakpoint = 992;
+    const accordionItems = document.querySelectorAll('.accordion-item');
 
-        const isDesktop = () => window.innerWidth >= breakpoint;
+    if (accordionItems.length === 0) return;
 
-        accordionItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                const isOpen = item.classList.contains('open');
-                const isLeftColumn = index % columns === 0;
+    const closeAll = () => {
+        accordionItems.forEach(el => el.classList.remove('open'));
+    };
 
-                accordionItems.forEach(el => el.classList.remove('open'));
+    accordionItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
 
-                if (isOpen) return;
+            closeAll();
 
+            if (!isOpen) {
                 item.classList.add('open');
-
-                if (isDesktop()) {
-                    const neighborIndex = isLeftColumn ? index + 1 : index - 1;
-                    const neighbor = accordionItems[neighborIndex];
-                    if (neighbor) {
-                        neighbor.classList.add('open');
-                    }
-                }
-            });
+            }
         });
+    });
 
-        window.addEventListener('resize', () => {
-            accordionItems.forEach(el => el.classList.remove('open'));
-        });
-    }
+    window.addEventListener('resize', closeAll);
 });
-
 
